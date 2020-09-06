@@ -45,3 +45,13 @@
     color: black;
     text-decoration: underline;
 }
+
+ul {
+    list-style-type: none;
+    /* doesn't work for safari */
+    list-style-type: "> ";
+}
+
+.padded {
+    padding: 10px;
+}

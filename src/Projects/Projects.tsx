@@ -8,16 +8,16 @@ const Fridgy: React.FC = () => (
   <Page
     title="Fridgy"
     blurb="Fridgy is an app that helps you organise your fridge"
-    appStoreUrl=""
-    githubUrl=""
+    appStoreUrl="https://apps.apple.com/us/app/fridgly/id1514948934"
+    githubUrl="https://github.com/tedbennett/fridgy-ios"
     imageUrls={[fridgy1, fridgy2]}
     description={
-    ['Built in Swift with UIKit',
-      'Fridgy keeps the user\'s fridge organised to prevent food waste.',
-      'The user enters the food in their fridge, along with its expiration dates.',
-      'Fridgy sorts the food by whats about to expire next, letting the user know what they should eat.',
-      'The user can access recipe suggestions, and can create a shopping list from what they\'ve removed from their fridge.',
-    ]
+      ['Built in Swift with UIKit',
+        'Fridgy keeps the user\'s fridge organised to prevent food waste.',
+        'The user enters the food in their fridge, along with its expiration dates.',
+        'Fridgy sorts the food by whats about to expire next, letting the user know what they should eat.',
+        'The user can access recipe suggestions, and can create a shopping list from what they\'ve removed from their fridge.',
+      ]
     }
   />
 );
