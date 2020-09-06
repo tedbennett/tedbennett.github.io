@@ -32,37 +32,7 @@ class Page extends React.Component<PageProps> {
 
   state = { markdown: "" };
 
-  MediaLinks: React.FC<LinkProps> = (props: LinkProps) => {
-    if (props.appStoreUrl !== "") {
-      return (
-        <div>
-          <a href={props.appStoreUrl}>
-            <Image
-              className="logo"
-              src={appStoreLogo}
-            />
-          </a>
-          <a href={props.githubUrl}>
-            <Image
-              className="logo"
-              src={githubLogo}
-              height={40}
-              width={40}
-            />
-          </a>
-        </div>
-      );
-    }
-    return (
-      <a href={props.githubUrl}>
-        <Image
-          className="logo"
-          src={githubLogo}
-          height={40}
-          width={40}
-        />
-      </a>);
-  };
+
 
   componentDidMount() {
     console.log('fetching');
@@ -127,10 +97,24 @@ class Page extends React.Component<PageProps> {
               </Container>
             </Row>
             <Row className="justify-content-center">
-              {/* <this.MediaLinks
-                appStoreUrl={this.props.appStoreUrl}
-                githubUrl={this.props.githubUrl}
-              /> */}
+              <div>
+                {(this.props.appStoreUrl !== "") ?
+                  <a href={this.props.appStoreUrl} >
+                    <Image
+                      className="logo"
+                      src={appStoreLogo}
+                    />
+                  </a> : null
+                }
+                <a href={this.props.githubUrl}>
+                  <Image
+                    className="logo"
+                    src={githubLogo}
+                    height={40}
+                    width={40}
+                  />
+                </a>
+              </div>
             </Row>
           </div>
         </Col>
