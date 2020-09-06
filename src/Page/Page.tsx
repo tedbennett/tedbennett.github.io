@@ -78,65 +78,66 @@ class Page extends React.Component<PageProps> {
       });
   }
 
-  render = () => (<Container >
-    <Row className="justify-content-md-center">
-      <Col lg={2} />
-      <Col lg={8} >
-        <div className="padded">
-          <Row className="justify-content-md-center ">
-            <a className="title text-light padded" href={this.props.githubUrl}>
-              {`// ${this.props.title}`}
-            </a>
-          </Row>
-          <Row className="justify-content-md-center">
-            <p className="blurb text-light text-center">
-              {'> ' + this.props.blurb}
-            </p>
-          </Row>
-          <Row className="justify-content-md-center">
-            <p className="blurb text-light text-center">
-              {'> ' + this.props.platform}
-            </p>
-          </Row>
-          <Row className="justify-content-center" xs={1} md={2}>
-            {this.props.imageUrls.map((value, index) => (
-              <Col key={index} >
-                <Image
-                  src={value}
-                  rounded
-                  fluid
-                  className="padded"
-                />
-              </Col>
-            ))}
-          </Row>
-          <Row >
-            <Container fluid className="padded">
-              <Accordion className="bg-dark" defaultActiveKey="1">
-                <Card className="bg-dark text-light">
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    README
+  render = () => (
+    <Container >
+      <Row className="justify-content-md-center">
+        <Col lg={2} />
+        <Col lg={8} >
+          <div className="padded">
+            <Row className="justify-content-md-center ">
+              <a className="title text-light padded" href={this.props.githubUrl}>
+                {`// ${this.props.title}`}
+              </a>
+            </Row>
+            <Row className="justify-content-md-center">
+              <p className="blurb text-light text-center">
+                {'> ' + this.props.blurb}
+              </p>
+            </Row>
+            <Row className="justify-content-md-center">
+              <p className="blurb text-light text-center">
+                {'> ' + this.props.platform}
+              </p>
+            </Row>
+            <Row className="justify-content-center" xs={1} md={2}>
+              {this.props.imageUrls.map((value, index) => (
+                <Col key={index} >
+                  <Image
+                    src={value}
+                    rounded
+                    fluid
+                    className="padded"
+                  />
+                </Col>
+              ))}
+            </Row>
+            <Row >
+              <Container fluid className="padded">
+                <Accordion className="bg-dark" defaultActiveKey="1">
+                  <Card className="bg-dark text-light">
+                    <Accordion.Toggle as={Card.Header} eventKey="0">
+                      README
                 </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body className="bg-dark">
-                      <ReactMarkdown className="text-light" source={this.state.markdown} />
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-            </Container>
-          </Row>
-          <Row className="justify-content-center">
-            <this.MediaLinks
-              appStoreUrl={this.props.appStoreUrl}
-              githubUrl={this.props.githubUrl}
-            />
-          </Row>
-        </div>
-      </Col>
-      <Col lg={2} />
-    </Row>
-  </Container >
+                    <Accordion.Collapse eventKey="0">
+                      <Card.Body className="bg-dark">
+                        <ReactMarkdown className="text-light" source={this.state.markdown} />
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Accordion>
+              </Container>
+            </Row>
+            <Row className="justify-content-center">
+              <this.MediaLinks
+                appStoreUrl={this.props.appStoreUrl}
+                githubUrl={this.props.githubUrl}
+              />
+            </Row>
+          </div>
+        </Col>
+        <Col lg={2} />
+      </Row>
+    </Container >
   );
 }
 

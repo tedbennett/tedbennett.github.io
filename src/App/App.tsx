@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import Home from '../Home/Home';
+import Ideas from '../Ideas/Ideas';
 import { Fridgy, SwitchIt, Kaja } from '../Projects/Projects';
 
 const App: React.FC = () => (
@@ -26,7 +27,7 @@ const App: React.FC = () => (
         <h1>Blog</h1>
       </Route>
       <Route exact path="/ideas">
-        <h1>Ideas</h1>
+        <Ideas />
       </Route>
       <Redirect to="/" />
     </Switch>
