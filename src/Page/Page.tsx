@@ -33,7 +33,6 @@ class Page extends React.Component<PageProps> {
   state = { markdown: "" };
 
   MediaLinks: React.FC<LinkProps> = (props: LinkProps) => {
-    console.log("Creating Media Links");
     if (props.appStoreUrl !== "") {
       return (
         <div>
@@ -128,10 +127,10 @@ class Page extends React.Component<PageProps> {
               </Container>
             </Row>
             <Row className="justify-content-center">
-              <this.MediaLinks
+              {/* <this.MediaLinks
                 appStoreUrl={this.props.appStoreUrl}
                 githubUrl={this.props.githubUrl}
-              />
+              /> */}
             </Row>
           </div>
         </Col>
