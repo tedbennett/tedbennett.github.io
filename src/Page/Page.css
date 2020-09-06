@@ -1,57 +1,15 @@
-.page {
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    margin: 0 0 0 0;
+.padded {
+    padding: 10px;
 }
 
 .title {
     font-size: 60pt;
-    margin-top: 2rem;
-    text-decoration: none;
-    /* color: #dddddd; */
-}
-
-.title:hover {
-    color: black;
-    text-decoration: underline;
 }
 
 .blurb {
     font-size: 18pt;
-    margin-top: 3rem;
-    /* margin-bottom: 5rem; */
-}
-
-.description {
-    font-size: 13pt;
-    /* margin-right: 15rem;
-    margin-left: 15rem; */
 }
 
 .logo {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-}
-
-.link {
-    color: black;
-    text-decoration: none;
-}
-
-.link:hover {
-    color: black;
-    text-decoration: underline;
-}
-
-ul {
-    list-style-type: none;
-    /* doesn't work for safari */
-    list-style-type: "> ";
-}
-
-.padded {
-    padding: 10px;
+    margin: 1rem;
 }

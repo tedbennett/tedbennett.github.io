@@ -8,17 +8,11 @@ const Fridgy: React.FC = () => (
   <Page
     title="Fridgy"
     blurb="Fridgy is an app that helps you organise your fridge"
+    platform="Built for iOS with UIKit"
     appStoreUrl="https://apps.apple.com/us/app/fridgly/id1514948934"
     githubUrl="https://github.com/tedbennett/fridgy-ios"
     imageUrls={[fridgy1, fridgy2]}
-    description={
-      ['Built in Swift with UIKit',
-        'Fridgy keeps the user\'s fridge organised to prevent food waste.',
-        'The user enters the food in their fridge, along with its expiration dates.',
-        'Fridgy sorts the food by whats about to expire next, letting the user know what they should eat.',
-        'The user can access recipe suggestions, and can create a shopping list from what they\'ve removed from their fridge.',
-      ]
-    }
+    readmeUrl="https://raw.githubusercontent.com/tedbennett/fridgy-iOS/master/README.md"
   />
 );
 
@@ -26,21 +20,23 @@ const SwitchIt: React.FC = () => (
   <Page
     title="SwitchIt"
     blurb="SwitchIt is an app that helps you share music across streaming platforms"
+    platform="Built for iOS with SwiftUI"
     appStoreUrl=""
     githubUrl="https://github.com/tedbennett/music-converter"
     imageUrls={[]}
-    description={[]}
+    readmeUrl="https://raw.githubusercontent.com/tedbennett/music-converter/master/README.md"
   />
 );
 
 const Kaja: React.FC = () => (
   <Page
-    title="Kaja!"
+    title="Kaja! - 가자!"
     blurb="Kaja! is an app to help you learn Hangul, the Korean alphabet"
+    platform="Built for iOS with SwiftUI"
     appStoreUrl=""
-    githubUrl=""
+    githubUrl="https://github.com/tedbennett/Kaja-learn-hangul"
     imageUrls={[]}
-    description={[]}
+    readmeUrl="https://raw.githubusercontent.com/tedbennett/Kaja-learn-hangul/master/README.md"
   />
 );
 
