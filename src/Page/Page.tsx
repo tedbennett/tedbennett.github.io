@@ -33,8 +33,8 @@ class Page extends React.Component<PageProps> {
   state = { markdown: "" };
 
   MediaLinks: React.FC<LinkProps> = (props: LinkProps) => {
-    const isLoggedIn = (props.appStoreUrl !== "");
-    if (isLoggedIn) {
+    console.log("Creating Media Links");
+    if (props.appStoreUrl !== "") {
       return (
         <div>
           <a href={props.appStoreUrl}>
@@ -84,18 +84,18 @@ class Page extends React.Component<PageProps> {
         <Col lg={2} />
         <Col lg={8} >
           <div className="padded">
-            <Row className="justify-content-md-center ">
+            <Row >
               <a className="title text-light padded" href={this.props.githubUrl}>
                 {`// ${this.props.title}`}
               </a>
             </Row>
-            <Row className="justify-content-md-center">
-              <p className="blurb text-light text-center">
+            <Row >
+              <p className="blurb text-light padded">
                 {'> ' + this.props.blurb}
               </p>
             </Row>
-            <Row className="justify-content-md-center">
-              <p className="blurb text-light text-center">
+            <Row >
+              <p className="blurb text-light padded">
                 {'> ' + this.props.platform}
               </p>
             </Row>
@@ -115,7 +115,7 @@ class Page extends React.Component<PageProps> {
               <Container fluid className="padded">
                 <Accordion className="bg-dark" defaultActiveKey="1">
                   <Card className="bg-dark text-light">
-                    <Accordion.Toggle as={Card.Header} eventKey="0">
+                    <Accordion.Toggle as={Card.Header} eventKey="0" className="blurb text-center">
                       README
                 </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
