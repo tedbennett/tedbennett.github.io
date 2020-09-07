@@ -23,54 +23,85 @@ type PageProps = {
   readmeUrl: string;
 };
 
+type PageState = {
+  markdown: string;
+}
+
 type LinkProps = {
   appStoreUrl: string,
   githubUrl: string;
 };
 
-class Page extends React.Component<PageProps> {
+type MarkdownProps = {
+  markdown: string;
+};
 
-  state = { markdown: "" };
-
-
+class Page extends React.Component<PageProps, PageState> {
+  constructor(props: PageProps) {
+    super(props);
+    this.state = { markdown: '' };
+  }
 
   componentDidMount() {
-    console.log('fetching');
-    fetch(this.props.readmeUrl)
-      .then(response => {
-        return response.text();
-      })
-      .then(text => {
+    const { readmeUrl } = this.props;
+    fetch(readmeUrl)
+      .then((response) => response.text())
+      .then((text) => {
         this.setState({
-          markdown: text
+          markdown: text,
         });
       });
   }
 
-  render = () => (
-    <Container >
-      <Row className="justify-content-md-center">
-        <Col lg={2} />
-        <Col lg={8} >
-          <div className="padded">
-            <Row >
-              <a className="title text-light padded" href={this.props.githubUrl}>
-                {`// ${this.props.title}`}
-              </a>
-            </Row>
-            <Row >
-              <p className="blurb text-light padded">
-                {'> ' + this.props.blurb}
-              </p>
-            </Row>
-            <Row >
-              <p className="blurb text-light padded">
-                {'> ' + this.props.platform}
-              </p>
-            </Row>
-            <Row className="justify-content-center" xs={1} md={2}>
-              {this.props.imageUrls.map((value, index) => (
-                <Col key={index} >
+  render = () => {
+    const {
+      title,
+      blurb,
+      platform,
+      githubUrl,
+      appStoreUrl,
+      imageUrls,
+    } = this.props;
+    const {
+      markdown,
+    } = this.state;
+
+    return (
+      <Container fluid>
+        <Row xs={1} lg={2}>
+          <Col>
+            <div className="padded">
+              <Row>
+                <a className="title text-light padded" href={githubUrl}>
+                  {`// ${title}`}
+                </a>
+              </Row>
+              <Row>
+                <p className="blurb text-light padded">
+                  {`> ${blurb}`}
+                </p>
+              </Row>
+              <Row>
+                <p className="blurb text-light padded">
+                  {`> ${platform}`}
+                </p>
+              </Row>
+              <Row>
+                <ReadMeAccordion markdown={markdown} />
+              </Row>
+              <Row className="justify-content-center">
+                <ExternalLinks
+                  githubUrl={githubUrl}
+                  appStoreUrl={appStoreUrl}
+                />
+              </Row>
+            </div>
+          </Col>
+          <Col>
+            <Row xs={1} sm={2}>
+              {imageUrls.map((value, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <Col key={index}>
                   <Image
                     src={value}
                     rounded
@@ -80,48 +111,58 @@ class Page extends React.Component<PageProps> {
                 </Col>
               ))}
             </Row>
-            <Row >
-              <Container fluid className="padded">
-                <Accordion className="bg-dark" defaultActiveKey="1">
-                  <Card className="bg-dark text-light">
-                    <Accordion.Toggle as={Card.Header} eventKey="0" className="blurb text-center">
-                      README
-                </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="0">
-                      <Card.Body className="bg-dark">
-                        <ReactMarkdown className="text-light" source={this.state.markdown} />
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
-              </Container>
-            </Row>
-            <Row className="justify-content-center">
-              <div>
-                {(this.props.appStoreUrl !== "") ?
-                  <a href={this.props.appStoreUrl} >
-                    <Image
-                      className="logo"
-                      src={appStoreLogo}
-                    />
-                  </a> : null
-                }
-                <a href={this.props.githubUrl}>
-                  <Image
-                    className="logo"
-                    src={githubLogo}
-                    height={40}
-                    width={40}
-                  />
-                </a>
-              </div>
-            </Row>
+          </Col>
+        </Row>
+        <Row>
+          <div className="padded">
+            <h1 className=" text-light padded">
+              {/* eslint-disable react/jsx-curly-brace-presence */}
+              {'// Blog'}
+            </h1>
           </div>
-        </Col>
-        <Col lg={2} />
-      </Row>
-    </Container >
-  );
+        </Row>
+      </Container>
+    );
+  };
 }
+
+const ReadMeAccordion: React.FC<MarkdownProps> = ({ markdown }: MarkdownProps) => (
+  <Container fluid className="padded">
+    <Accordion className="bg-dark" defaultActiveKey="1">
+      <Card className="bg-dark text-light">
+        <Accordion.Toggle as={Card.Header} eventKey="0" className="blurb text-center">
+          README
+        </Accordion.Toggle>
+        <Accordion.Collapse eventKey="0">
+          <Card.Body className="bg-dark">
+            <ReactMarkdown className="text-light" source={markdown} />
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
+  </Container>
+);
+
+const ExternalLinks: React.FC<LinkProps> = ({ appStoreUrl, githubUrl }: LinkProps) => (
+  <div>
+    {(appStoreUrl !== '')
+      ? (
+        <a href={appStoreUrl}>
+          <Image
+            className="logo"
+            src={appStoreLogo}
+          />
+        </a>
+      ) : null}
+    <a href={githubUrl}>
+      <Image
+        className="logo"
+        src={githubLogo}
+        height={40}
+        width={40}
+      />
+    </a>
+  </div>
+);
 
 export default Page;
