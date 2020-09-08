@@ -13,6 +13,10 @@ app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const { connection } = mongoose;
