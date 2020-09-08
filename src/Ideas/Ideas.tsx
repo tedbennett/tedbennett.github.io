@@ -26,7 +26,9 @@ class Ideas extends React.Component<{}, IdeaState> {
   componentDidMount = () => {
     // eslint-disable-next-line no-console
     console.log('fetching');
-    fetch('http://localhost:4000/api/ideas')
+    fetch('/api/ideas', {
+      mode: 'cors',
+    })
       .then((response) => response.json())
       .then((json) => {
         const ideas = json as Idea[];
