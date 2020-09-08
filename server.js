@@ -27,7 +27,7 @@ const blogsRouter = require('./routes/blogs');
 app.use('/api/ideas', ideasRouter);
 app.use('/api/blogs', blogsRouter);
 
-const port = process.env.BACKEND_PORT || 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Listening at http://localhost:${port}`);
