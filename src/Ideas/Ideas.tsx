@@ -62,7 +62,7 @@ class Ideas extends React.Component<{}, IdeaState> {
               {ideas.filter((idea) => idea.url.length === 0).map((idea, index) => (
                 <IdeaItem
                   title={idea.title}
-                  body={idea.title}
+                  body={idea.body}
                   url={idea.url}
                   key={index}
                 />
