@@ -29,7 +29,7 @@ const App: React.FC = () => (
       <Route exact path="/ideas">
         <Ideas />
       </Route>
-      <Redirect to="/" />
+      {/* <Redirect to="/" /> */}
     </Switch>
   </div>
 );
