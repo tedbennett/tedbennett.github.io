@@ -12,7 +12,6 @@ app.use(helmet());
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
-// app.use(mongoose());
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
