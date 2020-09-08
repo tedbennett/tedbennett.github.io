@@ -7,82 +7,82 @@ import Col from 'react-bootstrap/Col';
 import './Ideas.css';
 import logo from '../img/github-logo.png';
 
-type Idea = {
+interface Idea {
     title: string;
-    desc: string;
-    githubUrl: string;
-};
+    body: string;
+    url: string;
+}
 
-type IdeaProps = {
+type IdeaState = {
     ideas: Idea[];
 };
 
-const inProgressIdeas: Idea[] = [
-  {
-    title: 'Running Tracker',
-    desc: `I want to make a exercise tracker for running, with emphasis on the user's goals.
-        The app would ask how often and how far the user would like to run, and then give reminders
-        to help them real their goal. Their progress would be tracked and statistics would be available
-        on their pace etc.
-        I plan to make this with SwiftUI 2.0 with the Map View.`,
-    githubUrl: 'https://github.com/tedbennett/music-converter',
-  },
-  {
-    title: 'Language Learner',
-    desc: 'An App to learn languages',
-    githubUrl: '',
-  },
-];
+class Ideas extends React.Component<{}, IdeaState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { ideas: [] };
+  }
 
-const nonProgressIdeas: Idea[] = [
-  {
-    title: 'Running Tracker',
-    desc: 'An App to track running',
-    githubUrl: '',
-  },
-  {
-    title: 'Language Learner',
-    desc: 'An App to learn languages',
-    githubUrl: '',
-  },
-];
+  componentDidMount = () => {
+    // eslint-disable-next-line no-console
+    console.log('fetching');
+    fetch('http://localhost:4000/api/ideas')
+      .then((response) => response.json())
+      .then((json) => {
+        const ideas = json as Idea[];
+        this.setState({ ideas });
+      });
+  }
 
-const Ideas: React.FC = () => (
-  <Container>
-    <Row className="justify-content-md-center">
-      <Col lg={2} />
-      <Col lg={8}>
-        <div className="padded">
-          <Row className="justify-content-center">
-            <h1 className="title text-center">{'// Ideas'}</h1>
-          </Row>
-          <Row>
-            <h1 className="idea-header">{'// In Progress'}</h1>
-          </Row>
-          {inProgressIdeas.map((idea, index) => (
-            <IdeaItem title={idea.title} desc={idea.title} githubUrl={idea.githubUrl} key={index} />
-          ))}
-          <Row>
-            <h1 className="idea-header">{'// Other Ideas'}</h1>
-          </Row>
-          {nonProgressIdeas.map((idea, index) => (
-            <IdeaItem title={idea.title} desc={idea.title} githubUrl={idea.githubUrl} key={index} />
-          ))}
+  render = () => {
+    const { ideas } = this.state;
+    return (
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col lg={2} />
+          <Col lg={8}>
+            <div className="padded">
+              <Row className="justify-content-center">
+                <h1 className="title text-center">{'// Ideas'}</h1>
+              </Row>
+              <Row>
+                <h1 className="idea-header">{'// In Progress'}</h1>
+              </Row>
+              {ideas.filter((idea) => idea.url.length !== 0).map((idea, index) => (
+                <IdeaItem
+                  title={idea.title}
+                  body={idea.body}
+                  url={idea.url}
+                  key={index}
+                />
+              ))}
+              <Row>
+                <h1 className="idea-header">{'// Other Ideas'}</h1>
+              </Row>
+              {ideas.filter((idea) => idea.url.length === 0).map((idea, index) => (
+                <IdeaItem
+                  title={idea.title}
+                  body={idea.title}
+                  url={idea.url}
+                  key={index}
+                />
+              ))}
+            </div>
+          </Col>
+          <Col lg={2} />
+        </Row>
+      </Container>
+    );
+  }
+}
 
-        </div>
-      </Col>
-      <Col lg={2} />
-    </Row>
-  </Container>
-);
-
-const IdeaItem = ({ title, desc, githubUrl }: Idea) => (
+const IdeaItem = ({ title, body, url }: Idea) => (
   <div className="idea">
     <Row>
       <h3 className="idea-title">{`> ${title}`}</h3>
-      {(githubUrl !== '')
+      {(url !== '')
         ? (
-          <a href={githubUrl}>
+          <a href={url}>
             <img
               src={logo}
               width="30"
@@ -95,7 +95,7 @@ const IdeaItem = ({ title, desc, githubUrl }: Idea) => (
     </Row>
     <Row>
       <p className="idea-body">
-        {desc}
+        {body}
       </p>
     </Row>
   </div>

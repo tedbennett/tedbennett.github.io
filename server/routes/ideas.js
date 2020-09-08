@@ -8,7 +8,9 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-  const { title, body, url } = req.body;
+  const {
+    title, body, url,
+  } = req.body;
 
   const newIdea = new Idea({
     title,
