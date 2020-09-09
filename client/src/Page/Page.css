@@ -1,0 +1,15 @@
+.padded {
+    padding: 10px;
+}
+
+.title {
+    font-size: 60pt;
+}
+
+.blurb {
+    font-size: 18pt;
+}
+
+.logo {
+    margin: 1rem;
+}
