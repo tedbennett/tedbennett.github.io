@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-curly-brace-presence */
+// eslint-disable-next-line
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -18,6 +19,31 @@ interface Idea {
 type IdeaState = {
     ideas: Idea[];
 };
+
+const IdeaItem = ({ title, body, url }: Idea) => (
+  <div className="idea">
+    <Row>
+      <h3 className="idea-title">{`> ${title}`}</h3>
+      {(url !== '')
+        ? (
+          <a href={url}>
+            <img
+              src={logo}
+              width="30"
+              height="30"
+              className=" d-inline-block align-top "
+              alt="GitHub logo"
+            />
+          </a>
+        ) : null}
+    </Row>
+    <Row>
+      <p className="idea-body">
+        {body}
+      </p>
+    </Row>
+  </div>
+);
 
 class Ideas extends React.Component<{}, IdeaState> {
   constructor(props: {}) {
@@ -80,30 +106,5 @@ class Ideas extends React.Component<{}, IdeaState> {
     );
   }
 }
-
-const IdeaItem = ({ title, body, url }: Idea) => (
-  <div className="idea">
-    <Row>
-      <h3 className="idea-title">{`> ${title}`}</h3>
-      {(url !== '')
-        ? (
-          <a href={url}>
-            <img
-              src={logo}
-              width="30"
-              height="30"
-              className=" d-inline-block align-top "
-              alt="GitHub logo"
-            />
-          </a>
-        ) : null}
-    </Row>
-    <Row>
-      <p className="idea-body">
-        {body}
-      </p>
-    </Row>
-  </div>
-);
 
 export default Ideas;

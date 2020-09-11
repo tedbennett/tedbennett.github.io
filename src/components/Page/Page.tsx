@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -35,6 +36,45 @@ type LinkProps = {
 type MarkdownProps = {
   markdown: string;
 };
+
+const ReadMeAccordion: React.FC<MarkdownProps> = ({ markdown }: MarkdownProps) => (
+  <Container fluid className="padded">
+    <Accordion className="bg-dark" defaultActiveKey="1">
+      <Card className="bg-dark text-light">
+        <Accordion.Toggle as={Card.Header} eventKey="0" className="blurb text-center">
+          README
+        </Accordion.Toggle>
+        <Accordion.Collapse eventKey="0">
+          <Card.Body className="bg-dark">
+            <ReactMarkdown className="text-light" source={markdown} />
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
+  </Container>
+);
+
+const ExternalLinks: React.FC<LinkProps> = ({ appStoreUrl, githubUrl }: LinkProps) => (
+  <div>
+    {(appStoreUrl !== '')
+      ? (
+        <a href={appStoreUrl}>
+          <Image
+            className="logo"
+            src={appStoreLogo}
+          />
+        </a>
+      ) : null}
+    <a href={githubUrl}>
+      <Image
+        className="logo"
+        src={githubLogo}
+        height={40}
+        width={40}
+      />
+    </a>
+  </div>
+);
 
 class Page extends React.Component<PageProps, PageState> {
   constructor(props: PageProps) {
@@ -125,44 +165,5 @@ class Page extends React.Component<PageProps, PageState> {
     );
   };
 }
-
-const ReadMeAccordion: React.FC<MarkdownProps> = ({ markdown }: MarkdownProps) => (
-  <Container fluid className="padded">
-    <Accordion className="bg-dark" defaultActiveKey="1">
-      <Card className="bg-dark text-light">
-        <Accordion.Toggle as={Card.Header} eventKey="0" className="blurb text-center">
-          README
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="0">
-          <Card.Body className="bg-dark">
-            <ReactMarkdown className="text-light" source={markdown} />
-          </Card.Body>
-        </Accordion.Collapse>
-      </Card>
-    </Accordion>
-  </Container>
-);
-
-const ExternalLinks: React.FC<LinkProps> = ({ appStoreUrl, githubUrl }: LinkProps) => (
-  <div>
-    {(appStoreUrl !== '')
-      ? (
-        <a href={appStoreUrl}>
-          <Image
-            className="logo"
-            src={appStoreLogo}
-          />
-        </a>
-      ) : null}
-    <a href={githubUrl}>
-      <Image
-        className="logo"
-        src={githubLogo}
-        height={40}
-        width={40}
-      />
-    </a>
-  </div>
-);
 
 export default Page;
