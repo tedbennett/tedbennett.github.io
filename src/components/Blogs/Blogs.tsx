@@ -16,8 +16,8 @@ const Blogs: React.FC = () => (
           </Accordion>
         </div>
       </Col>
+      <Col lg={2} />
     </Row>
-    <Col lg={2} />
   </Container>
 );
 
