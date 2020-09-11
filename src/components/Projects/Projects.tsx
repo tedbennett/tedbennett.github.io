@@ -1,8 +1,8 @@
 import React from 'react';
 import Page from '../Page/Page';
 
-import fridgy1 from '../img/fridgy-1.png';
-import fridgy2 from '../img/fridgy-2.png';
+import fridgy1 from '../../img/fridgy-1.png';
+import fridgy2 from '../../img/fridgy-2.png';
 
 const Fridgy: React.FC = () => (
   <Page

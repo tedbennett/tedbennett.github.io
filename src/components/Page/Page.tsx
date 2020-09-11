@@ -8,8 +8,8 @@ import Card from 'react-bootstrap/Card';
 
 import ReactMarkdown from 'react-markdown';
 
-import githubLogo from '../img/github-logo.png';
-import appStoreLogo from '../img/appStore-logo.svg';
+import githubLogo from '../../img/github-logo.png';
+import appStoreLogo from '../../img/appStore-logo.svg';
 
 import './Page.css';
 

@@ -14,7 +14,7 @@ const BlogPost: React.FC<BlogProps> = ({
   project,
   date,
 }: BlogProps) => (
-  <Card>
+  <Card className="bg-dark text-light">
     <Accordion.Toggle as={Card.Header} eventKey="0">
       <h1>{title}</h1>
       <p>{`${project} - ${date.toLocaleDateString('en-US')}`}</p>
