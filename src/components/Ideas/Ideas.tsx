@@ -16,9 +16,14 @@ interface Idea {
     url: string;
 }
 
-type IdeaState = {
+interface IdeaProps {
+  ideas: Idea[];
+}
+
+interface IdeaState {
     ideas: Idea[];
-};
+    error: boolean;
+}
 
 const IdeaItem = ({ title, body, url }: Idea) => (
   <div className="idea">
@@ -45,10 +50,43 @@ const IdeaItem = ({ title, body, url }: Idea) => (
   </div>
 );
 
+const IdeasBody: React.FC<IdeaProps> = ({ ideas }: IdeaProps) => (
+  <div>
+    <Row>
+      <h1 className="idea-header">{'// In Progress'}</h1>
+    </Row>
+    {ideas.filter((idea) => idea.url.length !== 0).map((idea, index) => (
+      <IdeaItem
+        title={idea.title}
+        body={idea.body}
+        url={idea.url}
+        key={index}
+      />
+    ))}
+    <Row>
+      <h1 className="idea-header">{'// Other Ideas'}</h1>
+    </Row>
+    {ideas.filter((idea) => idea.url.length === 0).map((idea, index) => (
+      <IdeaItem
+        title={idea.title}
+        body={idea.body}
+        url={idea.url}
+        key={index}
+      />
+    ))}
+  </div>
+);
+
+const ErrorMessage: React.FC = () => (
+  <Row className="justify-content-center">
+    <h3>Unable to connect to Firebase</h3>
+  </Row>
+);
+
 class Ideas extends React.Component<{}, IdeaState> {
   constructor(props: {}) {
     super(props);
-    this.state = { ideas: [] };
+    this.state = { ideas: [], error: false };
   }
 
   componentDidMount = () => {
@@ -58,15 +96,15 @@ class Ideas extends React.Component<{}, IdeaState> {
         snapshot.forEach((snap) => {
           ideas.push(snap.val());
         });
-        this.setState({ ideas });
+        this.setState({ ideas, error: false });
       });
     } catch (error) {
-      console.log('Error');
+      this.setState({ error: true });
     }
   }
 
   render = () => {
-    const { ideas } = this.state;
+    const { ideas, error } = this.state;
     return (
       <Container>
         <Row className="justify-content-md-center">
@@ -76,28 +114,7 @@ class Ideas extends React.Component<{}, IdeaState> {
               <Row className="justify-content-center">
                 <h1 className="title text-center">{'// Ideas'}</h1>
               </Row>
-              <Row>
-                <h1 className="idea-header">{'// In Progress'}</h1>
-              </Row>
-              {ideas.filter((idea) => idea.url.length !== 0).map((idea, index) => (
-                <IdeaItem
-                  title={idea.title}
-                  body={idea.body}
-                  url={idea.url}
-                  key={index}
-                />
-              ))}
-              <Row>
-                <h1 className="idea-header">{'// Other Ideas'}</h1>
-              </Row>
-              {ideas.filter((idea) => idea.url.length === 0).map((idea, index) => (
-                <IdeaItem
-                  title={idea.title}
-                  body={idea.body}
-                  url={idea.url}
-                  key={index}
-                />
-              ))}
+              {error ? <ErrorMessage /> : <IdeasBody ideas={ideas} />}
             </div>
           </Col>
           <Col lg={2} />
