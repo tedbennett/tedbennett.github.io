@@ -5,6 +5,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import './Ideas.css';
 import { db } from '../../services/firebase';
@@ -75,12 +76,6 @@ const IdeasBody: React.FC<IdeaProps> = ({ ideas }: IdeaProps) => (
       />
     ))}
   </div>
-);
-
-const ErrorMessage: React.FC = () => (
-  <Row className="justify-content-center">
-    <h3>Unable to connect to Firebase</h3>
-  </Row>
 );
 
 class Ideas extends React.Component<{}, IdeaState> {
