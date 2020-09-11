@@ -17,7 +17,7 @@ const Blogs: React.FC = () => (
         </div>
       </Col>
     </Row>
-
+    <Col lg={2} />
   </Container>
 );
 
