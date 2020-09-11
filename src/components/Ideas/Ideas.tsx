@@ -4,8 +4,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import './Ideas.css';
-import logo from '../img/github-logo.png';
+import { db } from '../../services/firebase';
+import logo from '../../img/github-logo.png';
 
 interface Idea {
     title: string;
@@ -24,16 +26,17 @@ class Ideas extends React.Component<{}, IdeaState> {
   }
 
   componentDidMount = () => {
-    // eslint-disable-next-line no-console
-    console.log('fetching');
-    fetch('/api/ideas', {
-      mode: 'cors',
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        const ideas = json as Idea[];
+    try {
+      db.ref('ideas').once('value').then((snapshot) => {
+        const ideas: Idea[] = [];
+        snapshot.forEach((snap) => {
+          ideas.push(snap.val());
+        });
         this.setState({ ideas });
       });
+    } catch (error) {
+      console.log('Error');
+    }
   }
 
   render = () => {
