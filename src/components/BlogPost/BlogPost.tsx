@@ -1,12 +1,17 @@
 // eslint-disable-next-line
 import React from 'react';
-import { Card, Accordion } from 'react-bootstrap';
+import {
+  Card, Accordion, Row, Col,
+} from 'react-bootstrap';
+import ReactMarkdown from 'react-markdown';
+import './BlogPost.css';
 
 interface BlogProps {
     title: string,
     body: string,
     project: string,
-    date: Date
+    date: string,
+    index: number,
 }
 
 const BlogPost: React.FC<BlogProps> = ({
@@ -14,15 +19,22 @@ const BlogPost: React.FC<BlogProps> = ({
   body,
   project,
   date,
+  index,
 }: BlogProps) => (
-  <Card className="bg-dark text-light">
-    <Accordion.Toggle as={Card.Header} eventKey="0">
-      <h1>{title}</h1>
-      <p>{`${project} - ${date.toLocaleDateString('en-US')}`}</p>
+  <Card className="bg-dark text-light card-margin">
+    <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>
+      <Row>
+        <h1>{`> ${title}`}</h1>
+      </Row>
+      <Row>
+        <p>{project}</p>
+      </Row>
 
     </Accordion.Toggle>
-    <Accordion.Collapse eventKey="0">
-      <Card.Body>{body}</Card.Body>
+    <Accordion.Collapse eventKey={index.toString()}>
+      <Card.Body>
+        <ReactMarkdown className="text-light" source={body} />
+      </Card.Body>
     </Accordion.Collapse>
   </Card>
 );
