@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React from 'react';
 import {
-  Card, Accordion, Row, Col,
+  Card, Accordion, Row,
 } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import './BlogPost.css';
@@ -27,9 +27,8 @@ const BlogPost: React.FC<BlogProps> = ({
         <h1>{`> ${title}`}</h1>
       </Row>
       <Row>
-        <p>{project}</p>
+        <p>{project ? `${project} - ${date}` : date}</p>
       </Row>
-
     </Accordion.Toggle>
     <Accordion.Collapse eventKey={index.toString()}>
       <Card.Body>
