@@ -24,9 +24,9 @@ const SwitchIt: React.FC = () => (
     blurb="SwitchIt is an app that helps you share music across streaming platforms"
     platform="Built for iOS with SwiftUI"
     appStoreUrl=""
-    githubUrl="https://github.com/tedbennett/music-converter"
+    githubUrl="https://github.com/tedbennett/switch-it"
     imageUrls={[]}
-    readmeUrl="https://raw.githubusercontent.com/tedbennett/music-converter/master/README.md"
+    readmeUrl="https://raw.githubusercontent.com/tedbennett/switch-it/master/README.md"
     privacyUrl="/fridgy/privacy-policy"
   />
 );
