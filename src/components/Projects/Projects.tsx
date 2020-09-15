@@ -14,6 +14,7 @@ const Fridgy: React.FC = () => (
     githubUrl="https://github.com/tedbennett/fridgy-ios"
     imageUrls={[fridgy1, fridgy2]}
     readmeUrl="https://raw.githubusercontent.com/tedbennett/fridgy-iOS/master/README.md"
+    privacyUrl="/fridgy/privacy-policy"
   />
 );
 
@@ -26,6 +27,7 @@ const SwitchIt: React.FC = () => (
     githubUrl="https://github.com/tedbennett/music-converter"
     imageUrls={[]}
     readmeUrl="https://raw.githubusercontent.com/tedbennett/music-converter/master/README.md"
+    privacyUrl="/fridgy/privacy-policy"
   />
 );
 
@@ -38,6 +40,7 @@ const Kaja: React.FC = () => (
     githubUrl="https://github.com/tedbennett/Kaja-learn-hangul"
     imageUrls={[]}
     readmeUrl="https://raw.githubusercontent.com/tedbennett/Kaja-learn-hangul/master/README.md"
+    privacyUrl="/fridgy/privacy-policy"
   />
 );
 

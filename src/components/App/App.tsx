@@ -8,6 +8,7 @@ import Home from '../Home/Home';
 import Blogs from '../Blogs/Blogs';
 import Ideas from '../Ideas/Ideas';
 import { Fridgy, SwitchIt, Kaja } from '../Projects/Projects';
+import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 
 const App: React.FC = () => (
   <div>
@@ -19,11 +20,20 @@ const App: React.FC = () => (
       <Route exact path="/fridgy">
         <Fridgy />
       </Route>
+      <Route exact path="/fridgy/privacy-policy">
+        <PrivacyPolicy name="Fridgy" />
+      </Route>
       <Route exact path="/switch-it">
         <SwitchIt />
       </Route>
+      <Route exact path="/switch-it/privacy-policy">
+        <PrivacyPolicy name="SwitchIt" />
+      </Route>
       <Route exact path="/kaja">
         <Kaja />
+      </Route>
+      <Route exact path="/kaja/privacy-policy">
+        <PrivacyPolicy name="Kaja" />
       </Route>
       <Route exact path="/blog">
         <Blogs />

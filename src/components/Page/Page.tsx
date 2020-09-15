@@ -6,9 +6,10 @@ import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-
 import ReactMarkdown from 'react-markdown';
 
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import githubLogo from '../../img/github-logo.png';
 import appStoreLogo from '../../img/appStore-logo.svg';
 
@@ -21,7 +22,8 @@ type PageProps = {
   githubUrl: string,
   appStoreUrl: string,
   imageUrls: string[],
-  readmeUrl: string;
+  readmeUrl: string,
+  privacyUrl: string;
 };
 
 type PageState = {
@@ -101,6 +103,7 @@ class Page extends React.Component<PageProps, PageState> {
       githubUrl,
       appStoreUrl,
       imageUrls,
+      privacyUrl,
     } = this.props;
     const {
       markdown,
@@ -134,6 +137,11 @@ class Page extends React.Component<PageProps, PageState> {
                   githubUrl={githubUrl}
                   appStoreUrl={appStoreUrl}
                 />
+              </Row>
+              <Row className="justify-content-center">
+                <Button variant="secondary">
+                  <Link to={privacyUrl} className="text-light">Privacy Policy</Link>
+                </Button>
               </Row>
             </div>
           </Col>
