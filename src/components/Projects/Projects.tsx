@@ -4,6 +4,8 @@ import Page from '../Page/Page';
 
 import fridgy1 from '../../img/fridgy-1.png';
 import fridgy2 from '../../img/fridgy-2.png';
+import switchIt1 from '../../img/switch-it-1.png';
+import switchIt2 from '../../img/switch-it-2.png';
 
 const Fridgy: React.FC = () => (
   <Page
@@ -25,7 +27,7 @@ const SwitchIt: React.FC = () => (
     platform="Built for iOS with SwiftUI"
     appStoreUrl=""
     githubUrl="https://github.com/tedbennett/switch-it"
-    imageUrls={[]}
+    imageUrls={[switchIt1, switchIt2]}
     readmeUrl="https://raw.githubusercontent.com/tedbennett/switch-it/master/README.md"
     privacyUrl="/fridgy/privacy-policy"
   />
