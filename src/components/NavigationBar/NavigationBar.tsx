@@ -15,7 +15,7 @@ const NavigationBar: React.FC = () => (
         <NavDropdown title="Projects" id="basic-nav-dropdown">
           <NavDropdown.Item as={Link} to="/fridgy">Fridgy</NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/switch-it">SwitchIt</NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/kaja">Kaja!</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/kata">Kata</NavDropdown.Item>
         </NavDropdown>
         <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
         <Nav.Link as={Link} to="/ideas">Ideas</Nav.Link>

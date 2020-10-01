@@ -6,6 +6,8 @@ import fridgy1 from '../../img/fridgy-1.png';
 import fridgy2 from '../../img/fridgy-2.png';
 import switchIt1 from '../../img/switch-it-1.png';
 import switchIt2 from '../../img/switch-it-2.png';
+import kata1 from '../../img/kata-2.png';
+import kata2 from '../../img/kata-3.png';
 
 const Fridgy: React.FC = () => (
   <Page
@@ -29,21 +31,21 @@ const SwitchIt: React.FC = () => (
     githubUrl="https://github.com/tedbennett/switch-it"
     imageUrls={[switchIt1, switchIt2]}
     readmeUrl="https://raw.githubusercontent.com/tedbennett/switch-it/master/README.md"
-    privacyUrl="/fridgy/privacy-policy"
+    privacyUrl="/switch-it/privacy-policy"
   />
 );
 
-const Kaja: React.FC = () => (
+const Kata: React.FC = () => (
   <Page
-    title="Kaja! - 가자!"
-    blurb="Kaja! is an app to help you learn Hangul, the Korean alphabet"
+    title="Kata"
+    blurb="Kata is an app to help you learn languages with different alphabets"
     platform="Built for iOS with SwiftUI"
     appStoreUrl=""
-    githubUrl="https://github.com/tedbennett/Kaja-learn-hangul"
-    imageUrls={[]}
-    readmeUrl="https://raw.githubusercontent.com/tedbennett/Kaja-learn-hangul/master/README.md"
-    privacyUrl="/fridgy/privacy-policy"
+    githubUrl="https://github.com/tedbennett/kata"
+    imageUrls={[kata1, kata2]}
+    readmeUrl="https://raw.githubusercontent.com/tedbennett/kata/master/README.md"
+    privacyUrl="/kata/privacy-policy"
   />
 );
 
-export { Fridgy, SwitchIt, Kaja };
+export { Fridgy, SwitchIt, Kata };

@@ -7,7 +7,7 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 import Home from '../Home/Home';
 import Blogs from '../Blogs/Blogs';
 import Ideas from '../Ideas/Ideas';
-import { Fridgy, SwitchIt, Kaja } from '../Projects/Projects';
+import { Fridgy, SwitchIt, Kata } from '../Projects/Projects';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 
 const App: React.FC = () => (
@@ -29,11 +29,11 @@ const App: React.FC = () => (
       <Route exact path="/switch-it/privacy-policy">
         <PrivacyPolicy name="SwitchIt" />
       </Route>
-      <Route exact path="/kaja">
-        <Kaja />
+      <Route exact path="/kata">
+        <Kata />
       </Route>
-      <Route exact path="/kaja/privacy-policy">
-        <PrivacyPolicy name="Kaja" />
+      <Route exact path="/kata/privacy-policy">
+        <PrivacyPolicy name="Kata" />
       </Route>
       <Route exact path="/blog">
         <Blogs />
