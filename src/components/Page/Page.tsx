@@ -161,14 +161,13 @@ class Page extends React.Component<PageProps, PageState> {
             </Row>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <div className="padded">
             <h1 className=" text-light padded">
-              {/* eslint-disable react/jsx-curly-brace-presence */}
               {'// Blog'}
             </h1>
           </div>
-        </Row>
+        </Row> */}
       </Container>
     );
   };

@@ -17,7 +17,7 @@ const NavigationBar: React.FC = () => (
           <NavDropdown.Item as={Link} to="/switch-it">SwitchIt</NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/kata">Kata</NavDropdown.Item>
         </NavDropdown>
-        <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
+        {/* <Nav.Link as={Link} to="/blog">Blog</Nav.Link> */}
         <Nav.Link as={Link} to="/ideas">Ideas</Nav.Link>
       </Nav>
       <Nav className="ml-auto">

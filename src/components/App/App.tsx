@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import Home from '../Home/Home';
-import Blogs from '../Blogs/Blogs';
+// import Blogs from '../Blogs/Blogs';
 import Ideas from '../Ideas/Ideas';
 import { Fridgy, SwitchIt, Kata } from '../Projects/Projects';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
@@ -35,9 +35,9 @@ const App: React.FC = () => (
       <Route exact path="/kata/privacy-policy">
         <PrivacyPolicy name="Kata" />
       </Route>
-      <Route exact path="/blog">
+      {/* <Route exact path="/blog">
         <Blogs />
-      </Route>
+      </Route> */}
       <Route exact path="/ideas">
         <Ideas />
       </Route>
