@@ -1,0 +1,13 @@
+---
+import ThemeToggle from "./ThemeToggle";
+---
+
+<nav
+  class="w-full fixed top-0 flex flex-row justify-between items-center p-5 border-b-[1px] border-black border-opacity-5"
+>
+  <a href="/" aria-label="Home">
+    <span class="text-lg font-semibold">tedb.dev</span>
+  </a>
+
+  <ThemeToggle client:load />
+</nav>
