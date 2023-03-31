@@ -1,0 +1,27 @@
+---
+import Navbar from "../components/Navbar.astro";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-zinc-100 dark:bg-zinc-900 dark:text-white">
+    <Navbar />
+    <article>
+      <slot />
+    </article>
+  </body>
+</html>
+
+<script>
+  import "https://unpkg.com/phosphor-icons";
+  import { setTheme, getTheme } from "../helpers/theme";
+  const theme = getTheme();
+  setTheme(theme);
+</script>

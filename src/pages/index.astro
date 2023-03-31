@@ -1,36 +1,12 @@
 ---
 // Component Imports
 import Button from "../components/Button.astro";
-import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>tedb.dev</title>
-    <!-- <script src="https://unpkg.com/phosphor-icons"></script> -->
-  </head>
-
-  <body class="bg-white dark:bg-black dark:text-white">
-    <Navbar />
-    <div class="grid place-items-center h-screen content-center">
-      <Button>Tailwind Button in Astro!</Button>
-      <a href="/markdown-page" class="p-4 underline"
-        >Markdown is also supported...</a
-      >
-    </div>
-  </body>
-</html>
-
-<script>
-  import "https://unpkg.com/phosphor-icons";
-  import { setTheme, getTheme } from "../helpers/theme";
-  const theme = getTheme();
-  setTheme(theme);
-</script>
+<Layout title="tedb.dev">
+  <div class="grid place-items-center h-screen content-center"></div>
+</Layout>
