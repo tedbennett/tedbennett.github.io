@@ -11,13 +11,19 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="bg-zinc-100 dark:bg-zinc-900 dark:text-white">
+  <body class="bg-zinc-100 dark:bg-zinc-950 dark:text-white">
     <Navbar />
-    <article>
+    <article class="mt-16">
       <slot />
     </article>
   </body>
 </html>
+
+<style>
+  body {
+    font-family: "Helvetica-Neue", Helvetica, Arial, sans-serif;
+  }
+</style>
 
 <script>
   import "https://unpkg.com/phosphor-icons";

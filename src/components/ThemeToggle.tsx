@@ -14,13 +14,9 @@ export default function ThemeToggle(): FunctionalComponent {
   return (
     <button
       onClick={handleClick}
-      className="border-2 border-zinc-100 dark:border-zinc-800 rounded-lg p-1 w-8 h-8 "
+      className="border-[0px] border-zinc-500 dark:border-zinc-300 rounded-lg px-3 py-1 font-semibold uppercase"
     >
-      {theme === "light" ? (
-        <i class="ph-sun-bold" />
-      ) : (
-        <i class="ph-moon-bold" />
-      )}
+      <span>{theme === "dark" ? "dark" : "light"}</span>
     </button>
   );
 }
