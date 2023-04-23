@@ -1,9 +1,13 @@
 ---
-const { title } = Astro.props;
+const { title, features, description } = Astro.props;
 ---
 
-<div class="p-3 border-[1px] border-zinc-500 dark:border-zinc-300">
-  <span class="uppercase font-semibold text-lg">{title}</span>
-  <div class="h-[1px] bg-zinc-200 dark:bg-zinc-800 w-full"></div>
-  <span class="uppercase text-sm">iOS | Rust | Postgres</span>
-</div>
+<a href={`/projects/${title}`}>
+  <div class="p-3 border-[1px] border-zinc-500 dark:border-zinc-300">
+    <span class="uppercase font-semibold text-lg">{title}</span>
+    <div class="h-[1px] bg-zinc-200 dark:bg-zinc-800 w-full"></div>
+    <span class="uppercase text-sm">{features.join(" | ")}</span>
+    <br />
+    <span class="">{description}</span>
+  </div>
+</a>

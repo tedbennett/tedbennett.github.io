@@ -1,0 +1,37 @@
+---
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="projects | tedb.dev">
+  <div class="container mx-auto py-5">
+    <h1 class="text-2xl font-semibold uppercase">projects</h1>
+    <div class="grid grid-cols-2 h-full gap-5 py-5">
+      <Card
+        title="pixee"
+        description="Social app for drawing and sharing pixel art"
+        features={["SwiftUI, Rust, Postgres"]}
+      />
+      <Card
+        title="kude"
+        description="iOS app for creating shared Spotify music queues"
+        features={["SwiftUI, Spotify, Firebase"]}
+      />
+      <Card
+        title="fridgy"
+        description="iOS fridge organisation app"
+        features={["UIKit, Firebase"]}
+      />
+      <Card
+        title="versa"
+        description="iOS app for exporting Spotify and Apple Music playlists"
+        features={["SwiftUI, Spotify, Apple Music"]}
+      />
+      <Card
+        title="kb"
+        description="A command-line kanban board built with Rust and Tui-rs"
+        features={["Rust, TUI"]}
+      />
+    </div>
+  </div>
+</Layout>
