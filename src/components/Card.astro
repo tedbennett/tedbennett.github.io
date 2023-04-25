@@ -1,11 +1,11 @@
 ---
-const { title, features, description } = Astro.props;
+const { title, features, description, href } = Astro.props;
 ---
 
 <div
   class="border-[1px] border-zinc-500 dark:border-zinc-300 grayscale hover:bg-white hover:dark:bg-zinc-800/75 transition-[background-color] duration-300"
 >
-  <a href={`/projects/${title}`}>
+  <a href={href}>
     <div class="p-3">
       <div class="flex justify-between items-center">
         <div class="flex flex-row items-center gap-3 h-full grow">
