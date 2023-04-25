@@ -1,0 +1,30 @@
+---
+import Layout from "./Layout.astro";
+---
+
+<Layout>
+  <div class="markdown container px-4 sm:px-0 mx-auto py-5">
+    <slot />
+  </div>
+</Layout>
+
+<style is:global>
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+  }
+  p {
+    padding: 0.25rem 0;
+  }
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+  }
+</style>
