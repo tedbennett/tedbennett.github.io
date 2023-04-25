@@ -3,36 +3,32 @@ const { title, features, description } = Astro.props;
 ---
 
 <div
-  class="border-[1px] border-zinc-500 dark:border-zinc-300 grayscale hover:grayscale-0"
+  class="border-[1px] border-zinc-500 dark:border-zinc-300 grayscale hover:grayscale-0 hover:bg-white hover:dark:bg-zinc-900 transition-[background-color] duration-300"
 >
   <a href={`/projects/${title}`}>
     <div class="p-3">
       <div class="flex justify-between items-center">
         <div class="flex flex-row items-center gap-3 h-full grow">
-          <img
-            src={`${title}.png`}
-            class="rounded aspect-square h-24 transition-all duration-300"
-          />
+          <img src={`${title}.png`} class="rounded-xl aspect-square h-24" />
           <div class="flex flex-col grow">
             <div class="flex flex-row justify-between items-center">
               <span class="uppercase font-semibold text-xl">{title}</span>
               <span
-                class="uppercase text-xs dark:text-zinc-400 text-gray-500 lg:flex hidden"
+                class="uppercase text-xs dark:text-zinc-400 text-gray-500 hidden sm:block"
                 >{features.join(" | ")}</span
               >
             </div>
-
+            <span
+              class="uppercase text-xs dark:text-zinc-400 text-gray-500 flex sm:hidden py-1"
+              >{features.join(" | ")}</span
+            >
             <span class="">{description}</span>
           </div>
         </div>
       </div>
-      <!-- <div class="h-[1px] bg-zinc-200 dark:bg-zinc-800 w-full my-3"></div>
-      <div class="flex lg:hidden py-1">
-        <span class="uppercase text-xs dark:text-zinc-400 text-gray-500"
-          >{features.join(" | ")}</span
-        >
-      </div>
-      <span class="">{description}</span> -->
+      <!-- <div class="h-[1px] bg-zinc-200 dark:bg-zinc-800 w-full my-3"></div> -->
+      <div class=""></div>
+      <!-- <span class="">{description}</span> -->
     </div>
   </a>
 </div>
