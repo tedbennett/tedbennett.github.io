@@ -1,44 +1,78 @@
 ---
 ---
 
-<nav
-  class="w-full h-16 fixed top-0 flex flex-row bg-white dark:bg-black justify-between items-center p-5 border-b-[1px] border-zinc-500 dark:border-zinc-300 uppercase font-semibold"
->
-  <a href="/" aria-label="Home">
-    <span class="text-lg">tedb.dev</span>
-  </a>
+<nav class="w-full h-16 fixed z-50 top-0 uppercase font-semibold">
+  <div
+    class="w-full h-full flex flex-row bg-white dark:bg-black justify-between items-center p-5 border-b-[1px] border-zinc-500 dark:border-zinc-300"
+  >
+    <a href="/" aria-label="Home">
+      <span class="text-lg">tedb.dev</span>
+    </a>
 
-  <div class="flex flex-row gap-4 items-center">
+    <div class="flex-row gap-4 items-center hidden sm:flex">
+      <a href="/projects" aria-label="Projects"><span>projects</span></a>
+      <span>|</span>
+      <a href="https://github.com/tedbennett" aria-label="Github"
+        ><span>github</span></a
+      >
+      <span>|</span>
+      <a href="mailto:ted_bennett@icloud.com" aria-label="Contact"
+        ><span>contact</span></a
+      >
+    </div>
+    <button
+      id="theme-button"
+      class="px-3 py-1 font-semibold uppercase hidden sm:block"
+    >
+      <span id="theme-button-text">light</span>
+    </button>
+    <button
+      id="burger-button"
+      class="font-semibold uppercase flex flex-col justify-center gap-[0.35rem] sm:hidden aspect-square"
+    >
+      <div class="h-[0.15rem] w-6 bg-black dark:bg-white"></div>
+      <div class="h-[0.15rem] w-6 bg-black dark:bg-white"></div>
+      <div class="h-[0.15rem] w-6 bg-black dark:bg-white"></div>
+    </button>
+  </div>
+  <div class="w-full z-50 bg-white hidden flex-col p-5 gap-3" id="burger-menu">
     <a href="/projects" aria-label="Projects"><span>projects</span></a>
-    <span>|</span>
     <a href="https://github.com/tedbennett" aria-label="Github"
       ><span>github</span></a
     >
-    <span>|</span>
     <a href="mailto:ted_bennett@icloud.com" aria-label="Contact"
       ><span>contact</span></a
     >
   </div>
-  <button
-    data-theme-button
-    onclick=""
-    class="border-[0px] border-zinc-500 dark:border-zinc-300 rounded-lg px-3 py-1 font-semibold uppercase"
-  >
-    <span data-theme-button-text>light</span>
-  </button>
 </nav>
 
 <script>
   import { setTheme, getTheme } from "../helpers/theme";
   const theme = getTheme();
   setTheme(theme);
-  const span = document.querySelector("[data-theme-button-text]");
+  const span = document.getElementById("theme-button-text");
   span.textContent = theme;
 
-  const button = document.querySelector("[data-theme-button]");
+  const button = document.getElementById("theme-button");
   button.addEventListener("click", () => {
     const newTheme = getTheme() === "dark" ? "light" : "dark";
     setTheme(newTheme);
     span.textContent = newTheme;
+  });
+
+  const burger = document.getElementById("burger-button");
+  const menu = document.getElementById("burger-menu");
+  burger.addEventListener("click", () => {
+    (menu as HTMLElement).style.display =
+      (menu as HTMLElement).style.display === "flex" ? "none" : "flex";
+  });
+  document.addEventListener("click", (event) => {
+    let clicked = event.target;
+    do {
+      if (clicked === menu || clicked === burger) return;
+      // Go up the DOM
+      clicked = (clicked as HTMLElement)?.parentNode;
+    } while (clicked);
+    (menu as HTMLElement).style.display = "none";
   });
 </script>
