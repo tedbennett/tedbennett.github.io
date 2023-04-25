@@ -3,7 +3,7 @@
 
 <nav class="w-full h-16 fixed z-50 top-0 uppercase font-semibold">
   <div
-    class="w-full h-full flex flex-row bg-white dark:bg-black justify-between items-center p-5 border-b-[1px] border-zinc-500 dark:border-zinc-300"
+    class="w-full h-full flex flex-row justify-between bg-white dark:bg-black items-center p-5 border-b-[1px] border-zinc-500 dark:border-zinc-300"
   >
     <a href="/" aria-label="Home">
       <span class="text-lg">tedb.dev</span>
@@ -21,10 +21,10 @@
       >
     </div>
     <button
-      id="theme-button"
+      data-theme-button
       class="px-3 py-1 font-semibold uppercase hidden sm:block"
     >
-      <span id="theme-button-text">light</span>
+      <span data-theme-button-text>light</span>
     </button>
     <button
       id="burger-button"
@@ -35,7 +35,10 @@
       <div class="h-[0.15rem] w-6 bg-black dark:bg-white"></div>
     </button>
   </div>
-  <div class="w-full z-50 bg-white hidden flex-col p-5 gap-3" id="burger-menu">
+  <div
+    class="w-full z-50 hidden flex-col p-5 gap-3 sm:hidden bg-white dark:bg-black"
+    id="burger-menu"
+  >
     <a href="/projects" aria-label="Projects"><span>projects</span></a>
     <a href="https://github.com/tedbennett" aria-label="Github"
       ><span>github</span></a
@@ -43,22 +46,31 @@
     <a href="mailto:ted_bennett@icloud.com" aria-label="Contact"
       ><span>contact</span></a
     >
+    <button data-theme-button class="font-semibold uppercase text-left">
+      <span data-theme-button-text>light</span>
+    </button>
   </div>
 </nav>
 
 <script>
-  import { setTheme, getTheme } from "../helpers/theme";
-  const theme = getTheme();
-  setTheme(theme);
-  const span = document.getElementById("theme-button-text");
-  span.textContent = theme;
+  import { setTheme, getTheme, Theme } from "../helpers/theme";
 
-  const button = document.getElementById("theme-button");
-  button.addEventListener("click", () => {
-    const newTheme = getTheme() === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    span.textContent = newTheme;
-  });
+  const applyTheme = (theme: Theme) => {
+    setTheme(theme);
+    const spans = document.querySelectorAll("[data-theme-button-text]");
+    spans.forEach((span) => (span.textContent = theme));
+  };
+
+  const theme = getTheme();
+  applyTheme(theme);
+
+  const buttons = document.querySelectorAll("[data-theme-button]");
+  buttons.forEach((button) =>
+    button.addEventListener("click", () => {
+      const newTheme = getTheme() === "dark" ? "light" : "dark";
+      applyTheme(newTheme);
+    })
+  );
 
   const burger = document.getElementById("burger-button");
   const menu = document.getElementById("burger-menu");
