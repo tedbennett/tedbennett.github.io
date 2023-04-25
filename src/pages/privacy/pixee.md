@@ -1,10 +1,10 @@
 ---
-layout: ../../../layouts/Privacy.astro
+layout: ../../layouts/Privacy.astro
 ---
 
-## Kude Privacy Policy
+## Pixee Privacy Policy
 
-Ted Bennett built Kude as a Free app. This SERVICE is provided by Ted
+Ted Bennett built Pixee as a Free app. This SERVICE is provided by Ted
 Bennett at no cost and is intended for use as is.
 
 This page is used to inform visitors regarding my
@@ -19,7 +19,7 @@ with anyone except as described in this Privacy Policy.
 
 The terms used in this Privacy Policy have the same meanings
 as in our Terms and Conditions, which is accessible at
-Kude unless otherwise defined in this Privacy Policy.
+Pixee unless otherwise defined in this Privacy Policy.
 
 ### Information Collection and Use
 
