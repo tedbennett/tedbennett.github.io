@@ -11,7 +11,7 @@ export const getTheme = (): Theme => {
     if (stored in theme) return stored as Theme;
     return "dark";
   }
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  if (window && window.matchMedia("(prefers-color-scheme: dark)").matches) {
     return "dark";
   }
   return "light";
@@ -23,5 +23,8 @@ export const setTheme = (theme: Theme) => {
   } else {
     document.documentElement.classList.add("dark");
   }
-  window.localStorage.setItem("theme", theme);
+  window?.localStorage.setItem("theme", theme);
 };
+
+export const toggleTheme = () =>
+  setTheme(getTheme() === "dark" ? "light" : "dark");

@@ -1,5 +1,4 @@
 ---
-import ThemeToggle from "./ThemeToggle";
 ---
 
 <nav
@@ -20,6 +19,26 @@ import ThemeToggle from "./ThemeToggle";
       ><span>contact</span></a
     >
   </div>
-
-  <ThemeToggle client:load />
+  <button
+    data-theme-button
+    onclick=""
+    class="border-[0px] border-zinc-500 dark:border-zinc-300 rounded-lg px-3 py-1 font-semibold uppercase"
+  >
+    <span data-theme-button-text>light</span>
+  </button>
 </nav>
+
+<script>
+  import { setTheme, getTheme } from "../helpers/theme";
+  const theme = getTheme();
+  setTheme(theme);
+  const span = document.querySelector("[data-theme-button-text]");
+  span.textContent = theme;
+
+  const button = document.querySelector("[data-theme-button]");
+  button.addEventListener("click", () => {
+    const newTheme = getTheme() === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    span.textContent = newTheme;
+  });
+</script>
