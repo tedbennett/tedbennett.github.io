@@ -9,7 +9,11 @@ const { title, features, description, href } = Astro.props;
     <div class="p-3">
       <div class="flex justify-between items-center">
         <div class="flex flex-row items-center gap-3 h-full grow">
-          <img src={`/${title}.png`} class="rounded-xl aspect-square h-24" />
+          <img
+            src={`/${title}.png`}
+            class="rounded-xl aspect-square h-24"
+            alt={title}
+          />
           <div class="flex flex-col grow">
             <div class="flex flex-row justify-between items-center">
               <span class="uppercase font-semibold text-xl">{title}</span>
